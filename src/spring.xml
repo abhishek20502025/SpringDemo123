@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+  												<!-- org.abhishek package -->
+<beans><bean id="triangle" class="org.abhishek.traingle">
+<property name="area" value="44"></property>
+<property name="perimeter" value="344"></property></bean>
+												<!-- DrawApplication1 Package -->
+<bean id="triangle1" class="DrawApplication1.triangle1">
+<property name="A" ref="Zeropoint"></property>
+<property name="B" >
+		<bean  class="DrawApplication1.point">
+		<property name="X" value="-20"></property>
+		<property name="Y" value="0"></property>
+		</bean>
+</property>
+<property name="C" >
+		<bean class="DrawApplication1.point">
+		<property name="X" value="0"></property>
+		<property name="Y" value="20"></property>
+		</bean>
+</property>
+</bean>
+<bean id="Zeropoint"  class="DrawApplication1.point">
+<property name="X" value="0"></property>
+<property name="Y" value="0"></property>
+</bean>
+<alias name="triangle1" alias="triangle-alias"/>
+
+									        	<!-- DrawApplication2 Package -->
+<bean id="triangle2" class="DrawApplication2.triangle2">
+<property name="points" >
+				<list>
+				<ref bean="pointZero"></ref>
+				<ref bean="pointfirst"></ref>
+				<ref bean="pointSecond"></ref>
+				</list>
+</property></bean>
+<bean id="pointZero"  class="DrawApplication2.point">
+<property name="X" value="0"></property>
+<property name="Y" value="0"></property>
+</bean>
+<bean id="pointfirst"  class="DrawApplication2.point">
+<property name="X" value="-20"></property>
+<property name="Y" value="0"></property>
+</bean>
+<bean id="pointSecond"  class="DrawApplication2.point">
+<property name="X" value="0"></property>
+<property name="Y" value="20"></property>
+</bean>
+
+											<!-- DrawApplicationPackage3 Autowiring -->
+<bean id="triangle3" class="DrawApplication3.Triangle3" autowire="byName">
+</bean>
+<bean id="A"  class="DrawApplication3.point">
+<property name="X" value="0"></property>
+<property name="Y" value="0"></property>
+</bean>
+<bean id="B"  class="DrawApplication3.point">
+<property name="X" value="0"></property>
+<property name="Y" value="-20"></property>
+</bean>
+<bean id="C"  class="DrawApplication3.point">
+<property name="X" value="20"></property>
+<property name="Y" value="0"></property>
+</bean>
+
+</beans>
